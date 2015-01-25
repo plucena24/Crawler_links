@@ -16,6 +16,7 @@ class Manager():
             writer.writerows(csv_data)
 
 
+# from https://docs.python.org/2/library/csv.html
 class UnicodeWriter:
     """
     A CSV writer which will write rows to CSV file "f",

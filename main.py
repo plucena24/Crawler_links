@@ -24,6 +24,7 @@ def main(args):
         # continue loop
         else:
             while True:
+                print("run")
                 # define range of threads
                 for i in range(100):
                     t = Thread(target=master.spider)
@@ -45,7 +46,8 @@ def main(args):
                         for url in ch:
                             master.q.put(url.strip())
                         master.q.join()
-                    except KeyboardInterrupt:
+                    except Exception, err:
+                        print "Error %s:" % err.args[0]
                         sys.exit(1)
                 k += 1
                 break
@@ -55,4 +57,3 @@ if __name__ == '__main__':
         main(sys.argv[1:])
     except Exception, e:
         print "Error %s:" % e.args[0]
-        sys.exit(1)

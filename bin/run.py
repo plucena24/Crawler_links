@@ -14,12 +14,17 @@ class Run(mcsv.Manager, mdb.Manager, mhtml.Manager):
 
     def __init__(self, arg):
         # pass domain name from args to other functions
-        global root
-        root = arg
+        self.global_root(arg)
         # crate SQLite database
         self.create_db(self.db_file)
         # insert first url
         self.insert_urls_db(self.db_file, arg)
+
+    @staticmethod
+    def global_root(arg):
+        global root
+        root = arg
+        return root
 
     # main worker, that will run in threads
     @staticmethod
